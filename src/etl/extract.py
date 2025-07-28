@@ -1,9 +1,14 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv() 
 
 def extract_data():
 
   # Latitude e Longitude de curitiba
-  url = "https://api.open-meteo.com/v1/forecast?latitude=22.25&longitude=49.16&hourly=temperature_2m"
+  api_key = os.getenv('URL_API')
+  url = api_key
   headers = {"accept": "application/json"}
   baseHourWeather = None
   baseTemperatureWeather = None
@@ -15,7 +20,7 @@ def extract_data():
     baseTemperatureWeather = data["hourly"]["temperature_2m"][-1]
     print(baseHourWeather)
     print(baseTemperatureWeather)
-    
+
   except Exception as error:
     print(f'we have a problem: {error}')
     
