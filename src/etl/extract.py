@@ -18,11 +18,12 @@ def extract_data():
     data = response.json()
     baseHourWeather = data["hourly"]["time"][-1]
     baseTemperatureWeather = data["hourly"]["temperature_2m"][-1]
-    print(baseHourWeather)
-    print(baseTemperatureWeather)
 
   except Exception as error:
     print(f'we have a problem: {error}')
+
+  finally:
+    return baseTemperatureWeather, baseHourWeather
     
   
 extract_data()
