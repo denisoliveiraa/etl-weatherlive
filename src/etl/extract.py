@@ -1,20 +1,17 @@
 import requests
+import os
+from dotenv import load_dotenv
 
 def extract_data():
 
-  # Latitude e Longitude de curitiba
-  url = "https://api.open-meteo.com/v1/forecast?latitude=22.25&longitude=49.16&hourly=temperature_2m"
-  headers = {"accept": "application/json"}
-  baseHourWeather = None
-  baseTemperatureWeather = None
+  
+  load_dotenv()  
+  base_url = os.getenv("BASE_URL")
 
   try: 
-    response = requests.get(url, headers=headers)
+    response = requests.get(base_url)
     data = response.json()
-    baseHourWeather = data["hourly"]["time"][-1]
-    baseTemperatureWeather = data["hourly"]["temperature_2m"][-1]
-    print(baseHourWeather)
-    print(baseTemperatureWeather)
+    print(data)
     
   except Exception as error:
     print(f'we have a problem: {error}')
