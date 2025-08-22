@@ -9,14 +9,28 @@ logging.basicConfig(
 )
 
 def extract_data(base_url: str) -> dict | None:
-  base_url = os.getenv("BASE_URL")
   logging.info("Tentativa de busca na API")
   try: 
     
+    # Base URL information
     response = requests.get(base_url)
     data = response.json()
-    logging.info("Tentativa concluída com sucesso")
-    return data
+    logging.info("Try to access Base API success")
+    obs_url = data["properties"]["observationStations"]
+
+    # Stations URL information
+    details_url = requests.get(obs_url)
+    data_obs = details_url.json()
+    observation_station = data_obs["observationStations"][0]
+    logging.info("Try to get observation station information success")
+    observation_station = observation_station + "/observations/latest"
+
+    # specifc Station URL information
+    station_url = requests.get(observation_station)
+    data_weather = station_url.json()
+    logging.info("Try to get temperature information success")
+    
+    return data_weather
     
   except Exception as error:
     logging.error(f"Erro HTTP: {error}")
