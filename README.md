@@ -12,10 +12,12 @@ This project performs daily temperature data collection from a public API using 
 
 ## Technologies Used
 
-* Python 3.12
+* Python 3.11
 * Airflow (DAG orchestration)
 * Requests (API consumption)
 * Python-Dotenv (environment variable loading)
+* Apache Spark
+* Jupyter Notebook
 * Logging (execution monitoring)
 
 ## How to Run
