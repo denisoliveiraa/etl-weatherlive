@@ -1,7 +1,6 @@
 import requests
 import logging
-from save_extract import save_raw_data
-
+from .save_extract import save_raw_data
 
 logging.basicConfig(
     level=logging.INFO,

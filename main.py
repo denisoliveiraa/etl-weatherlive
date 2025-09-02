@@ -10,8 +10,10 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
+print("entrou")
 
 if __name__ == "__main__":
+  
     load_dotenv()    
     base_url = os.getenv("BASE_URL")
     try:

@@ -3,7 +3,7 @@ sys.path.append('/mnt/c/dev/etl-weatherlive')
 from airflow.models import DAG 
 from airflow.operators.python import PythonOperator  
 from datetime import datetime, timedelta
-from src.etl.extract import extract_data
+from src.etl.extract.extract import extract_data
 import logging
 
 logging.basicConfig(
